@@ -45,7 +45,7 @@ namespace Adventure2020.Services
             _map.Add(new Connection(1, 11, "Jít do levého pokoje"));
             _map.Add(new Connection(11, 12, "Jít do prvního pokoje"));
             _map.Add(new Connection(11, 13, "Jít do druhého pokoje"));
-            _map.Add(new Connection(0, 14, "Otevřít dveře", (gs) => { if (gs.key == true) return true; return false; }));
+            _map.Add(new Connection(0, 14, "Otevřít dveře na svobodu", (gs) => { if (gs.key == true) return true; return false; }));
 
         }
 
