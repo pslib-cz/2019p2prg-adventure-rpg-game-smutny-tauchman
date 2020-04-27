@@ -5,21 +5,37 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
+using RPG.Services;
 
 namespace RPG.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        public readonly SessionStorage _ss;
+        private static Random _random = new Random();
+        private bool[] enemies { get; set; }
+        private bool[] raided { get; set; }
+        public IndexModel(SessionStorage ss)
         {
-            _logger = logger;
+            _ss = ss;
+
         }
 
         public void OnGet()
         {
-
+            for  (int i = 0; i < 15; i++)
+            {
+                enemies[i] = _random.Next(0, 11) == 5 ? true : false;
+                raided[i] = false;
+            }
+            _ss.setEnemyArray(enemies);
+            _ss.setRaidArray(raided);
+            _ss.setKeyLocation(_random.Next(2, 14));
+            
+        }
+        public ActionResult OnPost()
+        {
+            return RedirectToPage("./Game");
         }
     }
 }
