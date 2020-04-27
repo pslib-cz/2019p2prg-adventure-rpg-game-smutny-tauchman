@@ -5,27 +5,21 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
-using RPG.Services;
 
-namespace RPG
+namespace RPG.Pages
 {
     public class IndexModel : PageModel
     {
-        public readonly SessionStorage _ss;
-        private static Random _random = new Random();
-        public int? secretRoomNumber { get; set; }
-        public IndexModel(SessionStorage ss)
-        {
-            _ss = ss;
+        private readonly ILogger<IndexModel> _logger;
 
+        public IndexModel(ILogger<IndexModel> logger)
+        {
+            _logger = logger;
         }
 
         public void OnGet()
         {
-            _ss.setKeyLocation(1);
-        }
-        public ActionResult OnPost() { 
-            return RedirectToPage("./setKeyLocation");        
+
         }
     }
 }

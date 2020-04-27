@@ -28,7 +28,7 @@ namespace RPG
             services.AddDistributedMemoryCache();
             services.AddSession();
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
-            services.AddScoped<RPG.Services.SessionStorage>();
+            services.AddScoped<SessionStorage>();
             services.AddRazorPages();
         }
 
@@ -37,6 +37,7 @@ namespace RPG
         {
             if (env.IsDevelopment())
             {
+
                 app.UseDeveloperExceptionPage();
             }
             else
@@ -50,6 +51,7 @@ namespace RPG
             app.UseStaticFiles();
 
             app.UseRouting();
+
             app.UseAuthorization();
             app.UseSession();
 
