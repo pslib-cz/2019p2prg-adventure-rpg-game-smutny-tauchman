@@ -1,10 +1,41 @@
 ﻿@page
-@model RPG_adventura.Pages.setKeyLocationModel
+@model RPG.Pages.Game
 @{ ViewData["Title"] = "setKeyLocation";
 }
-@{
-    for (int i = 0; i < Model._ss.getEnemyArray().Count; i++)
+<p>@Model.index</p>
+<p>@Model._ss.getKeyLocation()</p>  
+
+
+    @for (int i = 0; i < Model._lo.Rooms.Count; i++)
     {
-        <p>@Model._ss.getEnemyArray()[i]</p>
+        <p>@Model._lo.Rooms[i].raided</p>
     }
+@if(Model.index == 14 && Model.key == true)
+{
+    <p>Odemykáš dveře, ez (s)klep.</p>
 }
+@{ 
+    else
+    {
+        <p>@Model._lo.Rooms[Model.index].description</p>
+        @if(Model.index == Model._ss.getKeyLocation() && Model._lo.Rooms[Model.index].raided == false)
+        {
+            <p>Našel jsi klíč, tak ty jdeš fakt že jdeš.</p>
+            Model.key = true;
+        }
+        <form method="post">
+           @for (int i = 0; i < @Model._lo.Rooms[Model.index].rooms.Length; i++)
+           {
+            <div class="form-check">
+                <input type="hidden" asp-for="@Model.key" value="@Model.key" />
+                <input class="form-check-input" type="radio" asp-for="@Model.index" value="@Model._lo.Rooms[Model._lo.Rooms[Model.index].rooms[i]].id">
+                <label class="form-check-label" asp-for="@Model.index">
+                    @Model._lo.Rooms[Model._lo.Rooms[Model.index].rooms[i]].button
+                </label>
+            </div>
+           }
+            <button type="submit" class="btn-primary">Play</button>
+        </form>
+
+    }
+}   

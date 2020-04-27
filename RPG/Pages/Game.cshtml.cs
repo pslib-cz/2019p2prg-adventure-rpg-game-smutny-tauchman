@@ -6,16 +6,24 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using RPG.Services;
 
-namespace RPG_adventura.Pages
+namespace RPG.Pages
 {
-    public class setKeyLocationModel : PageModel
+    public class Game : PageModel
     {
         public readonly SessionStorage _ss;
         public readonly Locations _lo;
-        public setKeyLocationModel(SessionStorage ss)
+        [BindProperty]
+        public int index { get; set; }
+        [BindProperty]
+        public bool key { get; set; }
+        private List<bool> raided { get; set; }
+        public Game(SessionStorage ss)
         {
+            key = false;
             _ss = ss;
+            raided = _ss.getRaidArray();
             _lo = new Locations(ss);
+            index = 0;
         }
         public void OnGet()
         {
@@ -23,6 +31,8 @@ namespace RPG_adventura.Pages
         }
         public void OnPost()
         {
+            raided[index] = true;
+            _ss.setRaidArray(raided);
         }
     }
 }

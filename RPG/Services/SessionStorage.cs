@@ -29,7 +29,7 @@ namespace RPG.Services
         }
         public int? getKeyLocation()
         {
-            return keyLocation;
+            return _session.GetInt32(KEYLOCATION);
         }
         public void setKeyLocation(int number)
         {
