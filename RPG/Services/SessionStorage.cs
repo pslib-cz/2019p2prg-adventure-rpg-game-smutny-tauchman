@@ -15,14 +15,16 @@ namespace RPG.Services
         private int keyLocation { get; set; }
 
         const string ENEMYLOCATION = "Přítomnost nepřítele";
-        private bool[] enemyLocation { get; set; }
+        private List<bool> enemyLocation { get; set; }
 
         const string RAIDED = "Přítomnost hráče";
-        private bool[] raidedRooms { get; set; }
+        private List<bool> raidedRooms { get; set; }
 
         public SessionStorage(IHttpContextAccessor hca)
         {
             _session = hca.HttpContext.Session;
+            enemyLocation = new List<bool>();
+            raidedRooms = new List<bool>();
             
         }
         public int? getKeyLocation()
@@ -35,21 +37,21 @@ namespace RPG.Services
             keyLocation = number;
         }
 
-        public bool[] getEnemyArray()
+        public List<bool> getEnemyArray()
         {
-            return enemyLocation;
+            return _session.Get<List<bool>>(ENEMYLOCATION);
         }
-        public void setEnemyArray(bool[] enemyArray)
+        public void setEnemyArray(List<bool> enemyArray)
         {
             _session.Set(ENEMYLOCATION, enemyArray);
             enemyLocation = enemyArray;
         }
 
-        public bool[] getRaidArray()
+        public List<bool> getRaidArray()
         {
-            return raidedRooms;
+            return _session.Get<List<bool>>(RAIDED);
         }
-        public void setRaidArray(bool[] raidedArray)
+        public void setRaidArray(List<bool> raidedArray)
         {
             _session.Set(RAIDED, raidedArray);
             raidedRooms = raidedArray;
