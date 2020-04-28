@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using RPG.Helpers;
+using RPG.Models;
 
 namespace RPG.Services
 {
@@ -19,6 +20,9 @@ namespace RPG.Services
 
         const string RAIDED = "Přítomnost hráče";
         private List<bool> raidedRooms { get; set; }
+
+        const string GAMESTATE = "Stav hry";
+        private GameState gameState { get; set; }
 
         public SessionStorage(IHttpContextAccessor hca)
         {
@@ -55,6 +59,16 @@ namespace RPG.Services
         {
             _session.Set(RAIDED, raidedArray);
             raidedRooms = raidedArray;
+        }
+
+        public void setGameState(GameState state)
+        {
+            _session.Set(GAMESTATE, state);
+            gameState = state;
+        }
+        public GameState getGameState()
+        {
+            return _session.Get<GameState>(GAMESTATE);
         }
     }
 }

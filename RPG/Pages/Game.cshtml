@@ -4,11 +4,11 @@
 }
 <p>@Model.index</p>
 <p>@Model._ss.getKeyLocation()</p>  
-
+<p>@Model._ss.getGameState().HP</p>
 
     @for (int i = 0; i < Model._lo.Rooms.Count; i++)
     {
-        <p>@Model._lo.Rooms[i].raided</p>
+        <p> @Model._lo.Rooms[i].id - @Model._lo.Rooms[i].raided - @Model._lo.Rooms[i].containsEnemy</p>
     }
 @if(Model.index == 14 && Model.key == true)
 {
@@ -22,7 +22,13 @@
         {
             <p>Našel jsi klíč, tak ty jdeš fakt že jdeš.</p>
             Model.key = true;
+        }        
+        @if (Model._ss.getEnemyArray()[Model.index] == true && Model._lo.Rooms[Model.index].raided == false)
+        {
+            <p>Bafiky baf.</p>
         }
+
+
         <form method="post">
            @for (int i = 0; i < @Model._lo.Rooms[Model.index].rooms.Length; i++)
            {
