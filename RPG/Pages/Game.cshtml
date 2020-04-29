@@ -3,6 +3,7 @@
 @{ ViewData["Title"] = "setKeyLocation";
 }
 
+<!--
 <p>@Model.index</p>
 <p>@Model._ss.getKeyLocation()</p>
 <p>@Model._ss.getGameState().HP</p>
@@ -11,6 +12,11 @@
 {
 <p> @Model._lo.Rooms[i].id - @Model._lo.Rooms[i].raided - @Model._lo.Rooms[i].containsEnemy</p>
 }
+-->
+
+<label for="file">HP:</label>
+<progress id="file" max="100" value="@Model._ss.getGameState().HP">@Model._ss.getGameState().HP</progress>
+
 @if(Model.index == 14 && Model.key == true)
 {
 <p>Odemykáš dveře, ez (s)klep.</p>
@@ -41,10 +47,9 @@
     }
     @if (Model._ss.getEnemyArray()[Model.index] == true && Model._lo.Rooms[Model.index].raided == false)
     {
-        <img src="~/img/jumpscare.png" class="animated fadeOut jumpscare">
-        <audio autoplay>
-            <source src="~/audio/jumpscare.mp3" type="audio/mp3">
-        </audio>
-        <p>Bafiky baf.</p>      
+    <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s">
+    <audio autoplay>
+        <source src="~/audio/jumpscare.mp3" type="audio/mp3">
+    </audio>
     }
 }

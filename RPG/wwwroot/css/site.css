@@ -75,10 +75,10 @@ body {
 .jumpscare {
     position: absolute;
     z-index: -1;
-    top: 10px;
-    width: 50vw;
+    top: 5px;
+    left: 5px;
+    width: 90vw;
     height: 90vw;
-    animation-duration: 5s;
 }
 @charset "UTF-8";
 
@@ -3589,3 +3589,4 @@ body {
         animation-iteration-count: 1 !important;
     }
 }
+

@@ -36,7 +36,7 @@ namespace RPG.Pages
             }
             _ss.setEnemyArray(enemies);
             _ss.setRaidArray(raided);
-            _ss.setKeyLocation(1);
+            _ss.setKeyLocation(_random.Next(2,14));
             _ss.setGameState(gameState);
         }
         public ActionResult OnPost()
