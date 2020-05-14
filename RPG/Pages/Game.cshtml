@@ -2,8 +2,12 @@
 @model RPG.Pages.Game
 @{ ViewData["Title"] = "setKeyLocation";
 }
+<div class="text-center">
+    <p>Narazili jste na chybu, nebo máte nějakou přopomínku?</p>
+    <p><a href="mailto:denis.tauchman@gmail.com">Mo(u)drý Denis</a></p>
+    <p><a href="mailto:jan.smutný@gmail.com">Rudý John</a></p>
+</div>
 
-<!--
 <p>@Model.index</p>
 <p>@Model._ss.getKeyLocation()</p>
 <p>@Model._ss.getGameState().HP</p>
@@ -12,7 +16,7 @@
 {
 <p> @Model._lo.Rooms[i].id - @Model._lo.Rooms[i].raided - @Model._lo.Rooms[i].containsEnemy</p>
 }
--->
+
 
 <label for="file">HP:</label>
 <progress id="file" max="100" value="@Model._ss.getGameState().HP">@Model._ss.getGameState().HP</progress>
@@ -20,7 +24,14 @@
 @if(Model.index == 14 && Model.key == true)
 {
 <p>Odemykáš dveře, ez (s)klep.</p>
+<a href="@Url.Page("./Index")"><button>Začít znovu</button></a>
 }
+@{       else if(@Model.gameState.HP == 0)
+    {
+            <p>Zabili tě jako...?</p>
+            <a href="@Url.Page("./Index")"><button>Začít znovu</button></a>
+    }
+} 
 @{
     else
     {

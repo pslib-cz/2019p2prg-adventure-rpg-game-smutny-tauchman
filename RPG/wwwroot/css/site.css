@@ -3589,4 +3589,19 @@ body {
         animation-iteration-count: 1 !important;
     }
 }
+abbr:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    margin-right: 15px;
+    margin-top: 15px;
+    background-color: #ffffcc;
+    max-width: 500px;
+    border: #000000 solid;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+abbr {
+    text-decoration: none;
+}
 

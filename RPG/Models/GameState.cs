@@ -8,5 +8,6 @@ namespace RPG.Models
     public class GameState
     {
         public int HP { get; set; }
+        public int EnemyDamage { get; set; }
     }
 }

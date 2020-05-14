@@ -4,9 +4,38 @@
 }
 <link href="~/css/site.css" rel="stylesheet" />
 <div class="text-center">
-    <p class="color">Learn about <a href="https://docs.microsoft.com/aspnet/core%22%3Ebuilding"> Web apps with ASP.NET Core</a>.</p>
+    <p>Narazili jste na chybu, nebo máte nějakou přopomínku?</p>
+    <p><a href="mailto:denis.tauchman@gmail.com">Mo(u)drý Denis</a></p>
+    <p><a href="mailto:jan.smutný@gmail.com">Rudý John</a></p>
 </div>
 <form method="post">
+    <div class="form-check">
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="1">
+            <label class="form-check-label">
+                <abbr data-title="Obtížnost pro opice (Lkaře), takže každá pepega to zvládne">Jednoduchá</abbr>
+            </label>
+        </div>
+
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="2">
+            <label class="form-check-label">
+                <abbr data-title="Střeně těžká cesta pro ty, kteří to nechtějí mít jednoduché ani těžké">Střední</abbr>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="3">
+            <label class="form-check-label">
+                <abbr data-title="Pokud si tohle zvolíš, tak jseš fakt frajer a god jako Pčkaři">Těžká</abbr>
+            </label>
+        </div>
+        <div class="form-check">
+            <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="4">
+            <label class="form-check-label">
+                <abbr data-title="Pokud tě dneska posral holub, tak máš určitě dneska štěstí ty bazerante. Neváhej a pojď okusit extrémní výzvu od těch nejlepších vývojářů na celým světě a zkusit svoje dnešní štěstí.">Holub</abbr>
+            </label>
+        </div>
+    </div>
     <div class="form-group">
         <button type="submit" class="btn btn-primary">Začít hru!</button>
     </div>

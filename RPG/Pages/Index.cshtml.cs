@@ -17,6 +17,8 @@ namespace RPG.Pages
         public List<bool> enemies { get; set; }
         private List<bool> raided { get; set; }
         private GameState gameState { get; set; }
+        [BindProperty]
+        public int Difficulty { get; set; }
         public IndexModel(SessionStorage ss)
         {
             _ss = ss;
@@ -29,18 +31,50 @@ namespace RPG.Pages
 
         public void OnGet()
         {
-            for  (int i = 0; i < 15; i++)
-            {
-                enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false);
-                raided.Add(false);
-            }
-            _ss.setEnemyArray(enemies);
-            _ss.setRaidArray(raided);
-            _ss.setKeyLocation(_random.Next(2,14));
-            _ss.setGameState(gameState);
+            
         }
         public ActionResult OnPost()
         {
+            if(Difficulty == 1)
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false);
+                    raided.Add(false);
+                }
+                gameState.EnemyDamage = 10;
+            }
+            else if (Difficulty == 2)
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 || _random.Next(0, 11) == 2 ? true : false);
+                    raided.Add(false);
+                }
+                gameState.EnemyDamage = 20;
+            }
+            else if(Difficulty == 3)
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 || _random.Next(0, 11) == 2 || _random.Next(0, 11) == 1 ? true : false);
+                    raided.Add(false);
+                }
+                gameState.EnemyDamage = 30;
+            }
+            else
+            {
+                for (int i = 0; i < 15; i++)
+                {
+                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false);
+                    raided.Add(false);
+                }
+                gameState.EnemyDamage = 100;
+            }
+            _ss.setKeyLocation(_random.Next(2, 14));
+            _ss.setEnemyArray(enemies);
+            _ss.setRaidArray(raided);
+            _ss.setGameState(gameState);
             return RedirectToPage("./Game");
         }
     }

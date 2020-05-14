@@ -37,11 +37,19 @@ namespace RPG.Pages
             gameState = _ss.getGameState();
             if(_lo.Rooms[index].containsEnemy == true && _lo.Rooms[index].raided == false)
             {
-                gameState.HP = gameState.HP - 10;
+                gameState.HP = gameState.HP - gameState.EnemyDamage;
                 _ss.setGameState(gameState);
             }
             raided[index] = true;
             _ss.setRaidArray(raided);
+            if (gameState.HP <= 0)
+            {
+                gameState.HP = 0;
+            }
+        }
+        public ActionResult OnPostNewgame()
+        {
+            return RedirectToPage("./Index");
         }
     }
 }
