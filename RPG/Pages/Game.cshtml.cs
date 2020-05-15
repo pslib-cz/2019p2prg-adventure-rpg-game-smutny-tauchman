@@ -21,12 +21,12 @@ namespace RPG.Pages
         public GameState gameState { get; set; }
         public Game(SessionStorage ss)
         {
-            key = false;
             _ss = ss;
+            gameState = _ss.getGameState();
+            gameState.Key = false;
             raided = _ss.getRaidArray();
             _lo = new Locations(ss);
             index = 0;
-            gameState = _ss.getGameState();
         }
         public void OnGet()
         {
@@ -38,8 +38,12 @@ namespace RPG.Pages
             if(_lo.Rooms[index].containsEnemy == true && _lo.Rooms[index].raided == false)
             {
                 gameState.HP = gameState.HP - gameState.EnemyDamage;
-                _ss.setGameState(gameState);
             }
+            if(index == _ss.getKeyLocation())
+            {
+                gameState.Key = true;
+            }
+            _ss.setGameState(gameState);
             raided[index] = true;
             _ss.setRaidArray(raided);
             if (gameState.HP <= 0)

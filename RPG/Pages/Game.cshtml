@@ -3,14 +3,14 @@
 @{ ViewData["Title"] = "setKeyLocation";
 }
 <div class="text-center">
-    <p>Narazili jste na chybu, nebo máte nějakou přopomínku?</p>
+    <p>Narazili jste na chybu, nebo máte nějakou připomínku?</p>
     <p><a href="mailto:denis.tauchman@gmail.com">Mo(u)drý Denis</a></p>
     <p><a href="mailto:jan.smutný@gmail.com">Rudý John</a></p>
 </div>
 
-<p>@Model.index</p>
-<p>@Model._ss.getKeyLocation()</p>
-<p>@Model._ss.getGameState().HP</p>
+<p>klíč: @Model.gameState.Key</p>
+<p>index: @Model.index</p>
+<p>pozice klíče: @Model._ss.getKeyLocation()</p>
 
 @for (int i = 0; i < Model._lo.Rooms.Count; i++)
 {
@@ -21,12 +21,12 @@
 <label for="file">HP:</label>
 <progress id="file" max="100" value="@Model._ss.getGameState().HP">@Model._ss.getGameState().HP</progress>
 
-@if(Model.index == 14 && Model.key == true)
+@if(Model.index == 14 && Model.gameState.Key == true)
 {
 <p>Odemykáš dveře, ez (s)klep.</p>
 <a href="@Url.Page("./Index")"><button>Začít znovu</button></a>
 }
-@{       else if(@Model.gameState.HP == 0)
+@{       else if(Model.gameState.HP == 0)
     {
             <p>Zabili tě jako...?</p>
             <a href="@Url.Page("./Index")"><button>Začít znovu</button></a>
@@ -39,7 +39,6 @@
     @if(Model.index == Model._ss.getKeyLocation() && Model._lo.Rooms[Model.index].raided == false)
     {
     <p>Našel jsi klíč, tak ty jdeš fakt že jdeš.</p>
-    Model.key = true;
     }
 
 
@@ -56,11 +55,11 @@
     </form>
 
     }
-    @if (Model._ss.getEnemyArray()[Model.index] == true && Model._lo.Rooms[Model.index].raided == false)
+    @if (Model._lo.Rooms[Model.index].containsEnemy == true && Model._lo.Rooms[Model.index].raided == false)
     {
-    <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s">
-    <audio autoplay>
-        <source src="~/audio/jumpscare.mp3" type="audio/mp3">
-    </audio>
+   <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s">
+   // <audio autoplay>
+    //    <source src="~/audio/jumpscare.mp3" type="audio/mp3">
+    //</audio>
     }
 }

@@ -71,7 +71,7 @@ namespace RPG.Pages
                 }
                 gameState.EnemyDamage = 100;
             }
-            _ss.setKeyLocation(_random.Next(2, 14));
+            _ss.setKeyLocation(2);
             _ss.setEnemyArray(enemies);
             _ss.setRaidArray(raided);
             _ss.setGameState(gameState);

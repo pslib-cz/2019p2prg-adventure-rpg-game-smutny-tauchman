@@ -9,5 +9,6 @@ namespace RPG.Models
     {
         public int HP { get; set; }
         public int EnemyDamage { get; set; }
+        public bool Key { get; set; }
     }
 }
