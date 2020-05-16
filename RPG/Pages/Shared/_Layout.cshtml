@@ -11,12 +11,20 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">RESTART</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index"><div class="icon-loop"></div></a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                </div>
+                <div>
+                    <label for="file">HP:</label>
+                    <progress id="file" max="100" value="@Model.gameState.HP">@Model.gameState.HP</progress>
+                </div>
+                <div>
+                    @if (@Model.gameState.Key == true) { <img src="~/img/keyTrue.png" />}
+                    else { <img src="~/img/keyFalse.png" />}
                 </div>
             </div>
         </nav>
@@ -29,7 +37,7 @@
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2020 - RPG - <a asp-area="" asp-page="/Privacy">Privacy</a>
+            <p>Narazili jste na chybu, nebo máte nějakou přopomínku? <a href="mailto:denis.tauchman1@gmail.com">Mo(u)drý Denis</a> nebo <a href="mailto:jan.smutný@gmail.com">Rudý John</a></p>
         </div>
     </footer>
 

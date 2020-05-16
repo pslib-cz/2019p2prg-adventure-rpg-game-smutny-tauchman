@@ -2,11 +2,6 @@
 @model RPG.Pages.Game
 @{ ViewData["Title"] = "setKeyLocation";
 }
-<div class="text-center">
-    <p>Narazili jste na chybu, nebo máte nějakou připomínku?</p>
-    <p><a href="mailto:denis.tauchman@gmail.com">Mo(u)drý Denis</a></p>
-    <p><a href="mailto:jan.smutný@gmail.com">Rudý John</a></p>
-</div>
 
 <p>klíč: @Model.gameState.Key</p>
 <p>index: @Model.index</p>
@@ -17,9 +12,6 @@
 <p> @Model.rooms[i].id - @Model.rooms[i].raided - @Model.rooms[i].containsEnemy</p>
 }
 
-
-<label for="file">HP:</label>
-<progress id="file" max="100" value="@Model._ss.getGameState().HP">@Model._ss.getGameState().HP</progress>
 
 @if(Model.index == 14 && Model.gameState.Key == true)
 {

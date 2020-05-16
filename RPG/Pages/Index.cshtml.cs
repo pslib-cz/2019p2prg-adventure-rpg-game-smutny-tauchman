@@ -16,7 +16,7 @@ namespace RPG.Pages
         private static Random _random;
         private List<Room> _locationsArr { get; set; }
         private Locations _lo { get; set; }
-        private GameState gameState { get; set; }
+        public GameState gameState { get; set; }
         [BindProperty]
         public int Difficulty { get; set; }
         public IndexModel(SessionStorage ss)

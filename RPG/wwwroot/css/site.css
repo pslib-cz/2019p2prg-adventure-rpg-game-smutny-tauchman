@@ -1,6 +1,9 @@
 ﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
 for details on configuring this project to bundle and minify static web assets. */
-
+@import url('https://fonts.googleapis.com/css2?family=Doppio+One&display=swap');
+body {
+    font-family: 'Doppio One', sans-serif;
+}
 a.navbar-brand {
   white-space: normal;
   text-align: center;
@@ -149,3 +152,25 @@ abbr {
     text-decoration: none;
 }
 
+@font-face {
+    font-family: 'icomoon';
+    src: url('../img/icomoon.ttf') format('truetype'), url('fonts/icomoon.svg?tuy7c8#icomoon') format('svg');
+}
+
+[class^="icon-"], [class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: none;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-loop:before {
+    content: "\ea2e";
+}
