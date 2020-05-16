@@ -13,23 +13,16 @@ namespace RPG.Services
         readonly ISession _session;
         public Random random = new Random();
         const string KEYLOCATION = "Poloha Klíče";
-        private int keyLocation { get; set; }
 
-        const string ENEMYLOCATION = "Přítomnost nepřítele";
-        private List<bool> enemyLocation { get; set; }
-
-        const string RAIDED = "Přítomnost hráče";
-        private List<bool> raidedRooms { get; set; }
+        const string LOCATIONS = "Místnosti";
 
         const string GAMESTATE = "Stav hry";
-        private GameState gameState { get; set; }
+
+        const string INDEX = "Index aktuální místnosti";
 
         public SessionStorage(IHttpContextAccessor hca)
         {
-            _session = hca.HttpContext.Session;
-            enemyLocation = new List<bool>();
-            raidedRooms = new List<bool>();
-            
+            _session = hca.HttpContext.Session;          
         }
         public int? getKeyLocation()
         {
@@ -38,37 +31,32 @@ namespace RPG.Services
         public void setKeyLocation(int number)
         {
             _session.SetInt32(KEYLOCATION, number);
-            keyLocation = number;
         }
 
-        public List<bool> getEnemyArray()
+        public List<Room> getLocations()
         {
-            return _session.Get<List<bool>>(ENEMYLOCATION);
+            return _session.Get<List<Room>>(LOCATIONS);
         }
-        public void setEnemyArray(List<bool> enemyArray)
+        public void setLocations(List<Room> enemyArray)
         {
-            _session.Set(ENEMYLOCATION, enemyArray);
-            enemyLocation = enemyArray;
-        }
-
-        public List<bool> getRaidArray()
-        {
-            return _session.Get<List<bool>>(RAIDED);
-        }
-        public void setRaidArray(List<bool> raidedArray)
-        {
-            _session.Set(RAIDED, raidedArray);
-            raidedRooms = raidedArray;
+            _session.Set(LOCATIONS, enemyArray);
         }
 
         public void setGameState(GameState state)
         {
             _session.Set(GAMESTATE, state);
-            gameState = state;
         }
         public GameState getGameState()
         {
             return _session.Get<GameState>(GAMESTATE);
+        }
+        public int? getIndex()
+        {
+            return _session.GetInt32(INDEX);
+        }
+        public void setIndex(int index)
+        {
+            _session.SetInt32(INDEX, index);
         }
     }
 }

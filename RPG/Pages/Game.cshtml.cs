@@ -12,30 +12,31 @@ namespace RPG.Pages
     public class Game : PageModel
     {
         public readonly SessionStorage _ss;
-        public readonly Locations _lo;
+        public List<Room> rooms;
         [BindProperty]
         public int index { get; set; }
         [BindProperty]
         public bool key { get; set; }
-        private List<bool> raided { get; set; }
         public GameState gameState { get; set; }
         public Game(SessionStorage ss)
         {
             _ss = ss;
             gameState = _ss.getGameState();
             gameState.Key = false;
-            raided = _ss.getRaidArray();
-            _lo = new Locations(ss);
-            index = 0;
+            rooms = _ss.getLocations();
+            index = (int)_ss.getIndex();
+            rooms[index].raided = true;
+            _ss.setLocations(rooms);
         }
         public void OnGet()
         {
-         
+
         }
         public void OnPost()
         {
+            rooms = _ss.getLocations();
             gameState = _ss.getGameState();
-            if(_lo.Rooms[index].containsEnemy == true && _lo.Rooms[index].raided == false)
+            if(rooms[index].containsEnemy == true && rooms[index].raided == false)
             {
                 gameState.HP = gameState.HP - gameState.EnemyDamage;
             }
@@ -43,13 +44,13 @@ namespace RPG.Pages
             {
                 gameState.Key = true;
             }
-            _ss.setGameState(gameState);
-            raided[index] = true;
-            _ss.setRaidArray(raided);
             if (gameState.HP <= 0)
             {
                 gameState.HP = 0;
             }
+            _ss.setGameState(gameState);
+            _ss.setLocations(rooms);
+            _ss.setIndex(index);
         }
         public ActionResult OnPostNewgame()
         {

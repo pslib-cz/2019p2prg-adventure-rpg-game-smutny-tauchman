@@ -14,7 +14,7 @@ namespace RPG.Models
         public bool containsEnemy { get; set; }
         public int[] rooms { get; set; }
         public bool raided { get; set; }
-        public Room(int id, string description, string button, bool containsKey, bool containsEnemy, int[] rooms, bool raided)
+        public Room(int id, string description, string button, int[] rooms, bool containsEnemy = false, bool raided = false,  bool containsKey = false)
         {
             this.id = id;
             this.description = description;

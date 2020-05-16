@@ -14,17 +14,16 @@ namespace RPG.Pages
     {
         public readonly SessionStorage _ss;
         private static Random _random;
-        public List<bool> enemies { get; set; }
-        private List<bool> raided { get; set; }
+        private List<Room> _locationsArr { get; set; }
+        private Locations _lo { get; set; }
         private GameState gameState { get; set; }
         [BindProperty]
         public int Difficulty { get; set; }
         public IndexModel(SessionStorage ss)
         {
             _ss = ss;
+            _lo = new Locations(ss);
             _random = new Random();
-            enemies = new List<bool>();
-            raided = new List<bool>();
             gameState = new GameState();
             gameState.HP = 100;
         }
@@ -35,46 +34,43 @@ namespace RPG.Pages
         }
         public ActionResult OnPost()
         {
+            _locationsArr = _ss.getLocations();
             if(Difficulty == 1)
             {
-                for (int i = 0; i < 15; i++)
+                for (int i = 1; i < _locationsArr.Count - 1; i++)
                 {
-                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false);
-                    raided.Add(false);
+                    _locationsArr[i].containsEnemy = _random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false;
                 }
                 gameState.EnemyDamage = 10;
             }
             else if (Difficulty == 2)
             {
-                for (int i = 0; i < 15; i++)
+                for (int i = 1; i < _locationsArr.Count - 1; i++)
                 {
-                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 || _random.Next(0, 11) == 2 ? true : false);
-                    raided.Add(false);
+                    _locationsArr[i].containsEnemy = _random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 || _random.Next(0, 11) == 2 ? true : false;
+
                 }
                 gameState.EnemyDamage = 20;
             }
             else if(Difficulty == 3)
             {
-                for (int i = 0; i < 15; i++)
+                for (int i = 1; i < _locationsArr.Count - 1; i++)
                 {
-                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 || _random.Next(0, 11) == 2 || _random.Next(0, 11) == 1 ? true : false);
-                    raided.Add(false);
+                    _locationsArr[i].containsEnemy = _random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 || _random.Next(0, 11) == 2 || _random.Next(0, 11) == 1 ? true : false;
                 }
                 gameState.EnemyDamage = 30;
             }
             else
             {
-                for (int i = 0; i < 15; i++)
+                for (int i = 1; i < _locationsArr.Count - 1; i++)
                 {
-                    enemies.Add(_random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false);
-                    raided.Add(false);
+                    _locationsArr[i].containsEnemy = _random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false;
                 }
                 gameState.EnemyDamage = 100;
             }
-            _ss.setKeyLocation(2);
-            _ss.setEnemyArray(enemies);
-            _ss.setRaidArray(raided);
             _ss.setGameState(gameState);
+            _ss.setLocations(_locationsArr);
+            _ss.setIndex(0);
             return RedirectToPage("./Game");
         }
     }

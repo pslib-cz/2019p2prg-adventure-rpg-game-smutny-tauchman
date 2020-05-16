@@ -12,9 +12,9 @@
 <p>index: @Model.index</p>
 <p>pozice klíče: @Model._ss.getKeyLocation()</p>
 
-@for (int i = 0; i < Model._lo.Rooms.Count; i++)
+@for (int i = 0; i < Model.rooms.Count; i++)
 {
-<p> @Model._lo.Rooms[i].id - @Model._lo.Rooms[i].raided - @Model._lo.Rooms[i].containsEnemy</p>
+<p> @Model.rooms[i].id - @Model.rooms[i].raided - @Model.rooms[i].containsEnemy</p>
 }
 
 
@@ -35,27 +35,27 @@
 @{
     else
     {
-    <p>@Model._lo.Rooms[Model.index].description</p>
-    @if(Model.index == Model._ss.getKeyLocation() && Model._lo.Rooms[Model.index].raided == false)
+    <p>@Model.rooms[Model.index].description</p>
+    @if(Model.index == Model._ss.getKeyLocation() && Model.rooms[Model.index].raided == false)
     {
     <p>Našel jsi klíč, tak ty jdeš fakt že jdeš.</p>
     }
 
 
     <form method="post">
-        @for (int i = 0; i < @Model._lo.Rooms[Model.index].rooms.Length; i++)
+        @for (int i = 0; i < @Model.rooms[Model.index].rooms.Length; i++)
         {
         <div class="form-check">
             <input type="hidden" asp-for="@Model.key" value="@Model.key" />
             <label class="form-check-label" asp-for="@Model.index">
-                <button type="submit" name="index" value="@Model._lo.Rooms[Model._lo.Rooms[Model.index].rooms[i]].id">@Model._lo.Rooms[Model._lo.Rooms[Model.index].rooms[i]].button</button>
+                <button type="submit" name="index" value="@Model.rooms[Model.rooms[Model.index].rooms[i]].id">@Model.rooms[Model.rooms[Model.index].rooms[i]].button</button>
             </label>
         </div>
         }
     </form>
 
     }
-    @if (Model._lo.Rooms[Model.index].containsEnemy == true && Model._lo.Rooms[Model.index].raided == false)
+    @if (Model.rooms[Model.index].containsEnemy == true && Model.rooms[Model.index].raided == false)
     {
    <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s">
    // <audio autoplay>
