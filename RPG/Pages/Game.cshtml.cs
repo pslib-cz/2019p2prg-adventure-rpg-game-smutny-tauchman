@@ -26,7 +26,6 @@ namespace RPG.Pages
             rooms = _ss.getLocations();
             index = (int)_ss.getIndex();
             rooms[index].raided = true;
-            _ss.setLocations(rooms);
         }
         public void OnGet()
         {
@@ -34,7 +33,6 @@ namespace RPG.Pages
         }
         public void OnPost()
         {
-            rooms = _ss.getLocations();
             gameState = _ss.getGameState();
             if(rooms[index].containsEnemy == true && rooms[index].raided == false)
             {
