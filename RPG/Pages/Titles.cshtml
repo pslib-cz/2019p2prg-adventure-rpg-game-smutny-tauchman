@@ -1,0 +1,40 @@
+﻿@page
+@model RPG.Pages.Titles
+@{
+    ViewData["Title"] = "Home page";
+}
+
+    <div class="fadeIn">
+        <p class="title">TITULKY</p>
+        <p class=" firstLayer">Autoři</p>
+        <p>Denis Tauchman</p>
+        <p>Jan Smutný</p>
+        <p class="firstLayer">Poděkování za spolupráci</p>
+        <p>Michal Stehlík</p>
+        <p>Tomáš Kazda</p>
+        <p>Michaela Hübnerová</p>
+        <p>Vojtěch Dejnožka</p>
+        <p>Jan Mrázek</p>
+        <p class="firstLayer">Testování</p>
+        <p>Jan Mrázek</p>
+        <p>Vojtěch Dejnožka</p>
+        <p>Filip Margitai</p>
+        <p class="firstLayer">Animace</p>
+        <p><a href="https://animate.style/" target="_blank">Daniel Eden a přátelé</a></p>
+        <p class="firstLayer">Zvuky a písně</p>
+        <p><a href="https://www.youtube.com/watch?v=UI2WuKFX7u0" target="_blank">DEAD SILENCE (OFFICIAL THEME SONG) - Charlie Clouser</a></p>
+
+    </div>
+<audio id="deadSilence" autoplay>
+    <source src="~/audio/DEAD SILENCE (OFFICIAL THEME SONG) - Charlie Clouser.mp3" type="audio/mp3">
+</audio>
+<script>
+    let audio = document.getElementById("deadSilence");
+    audio.volume = 0.01;
+    let titles = document.querySelectorAll(".fadeIn p");
+    let time = 0;
+    titles.forEach(element => {
+        element.style.animationDelay = time + "s";
+        time += 1;
+    });
+</script>

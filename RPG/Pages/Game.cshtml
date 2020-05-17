@@ -24,8 +24,7 @@
             <a href="@Url.Page("./Index")"><button>Začít znovu</button></a>
     }
 } 
-@{
-    else
+@{      else
     {
     <p>@Model.rooms[Model.index].description</p>
     @if(Model.index == Model._ss.getKeyLocation() && Model.rooms[Model.index].raided == false)
@@ -49,9 +48,20 @@
     }
     @if (Model.rooms[Model.index].containsEnemy == true && Model.rooms[Model.index].raided == false)
     {
-   <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s">
-   <audio autoplay>
+   <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s" id="jumpscare">    <audio autoplay id="jumpscare">
         <source src="~/audio/jumpscare.mp3" type="audio/mp3">
    </audio>
+   <script>
+       const sleep = (milliseconds) => {
+            return new Promise(resolve => setTimeout(resolve, milliseconds))
+            }
+       sleep(1000).then(() => {
+        let image = document.getElementById('jumpscare');
+        image.parentNode.removeChild(image);
+       })
+   </script>
     }
 }
+   <audio autoplay loop>
+       <source src="~/audio/halloween-theme.mp3" type="audio/mp3">
+   </audio>

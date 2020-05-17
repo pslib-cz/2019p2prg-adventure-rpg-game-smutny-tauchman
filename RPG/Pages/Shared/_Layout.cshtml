@@ -23,8 +23,10 @@
                     <progress id="file" max="100" value="@Model.gameState.HP">@Model.gameState.HP</progress>
                 </div>
                 <div>
-                    @if (@Model.gameState.Key == true) { <img src="~/img/keyTrue.png" />}
-                    else { <img src="~/img/keyFalse.png" />}
+                    @if (@Model.gameState.Key == true)
+                    {<img src="~/img/keyTrue.png" />}
+                    else
+                    { <img src="~/img/keyFalse.png" />}
                 </div>
             </div>
         </nav>
@@ -34,12 +36,13 @@
             @RenderBody()
         </main>
     </div>
-
-    <footer class="border-top footer text-muted">
-        <div class="container">
+    <footer class="border-top footer text-muted position-fixed bg-light mt-1">
+        <div class="d-flex justify-content-around">
             <p>Narazili jste na chybu, nebo máte nějakou přopomínku? <a href="mailto:denis.tauchman1@gmail.com">Mo(u)drý Denis</a> nebo <a href="mailto:jan.smutný@gmail.com">Rudý John</a></p>
+            <a href="@Url.Page("./Titles")">titulky</a>
         </div>
     </footer>
+
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>

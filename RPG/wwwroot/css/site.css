@@ -80,8 +80,8 @@ body {
     z-index: -1;
     top: 5px;
     left: 5px;
-    width: 90vw;
-    height: 90vw;
+    width: 100em;
+    height: 100em;
 }
 @charset "UTF-8";
 

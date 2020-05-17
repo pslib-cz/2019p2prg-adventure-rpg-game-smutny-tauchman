@@ -30,7 +30,7 @@ namespace RPG.Pages
 
         public void OnGet()
         {
-            
+            _ss.setGameState(gameState);
         }
         public ActionResult OnPost()
         {
@@ -68,9 +68,9 @@ namespace RPG.Pages
                 }
                 gameState.EnemyDamage = 100;
             }
-            _ss.setGameState(gameState);
             _ss.setLocations(_locationsArr);
             _ss.setIndex(0);
+            _ss.setGameState(gameState);
             return RedirectToPage("./Game");
         }
     }
