@@ -42,6 +42,10 @@ namespace RPG.Pages
             {
                 gameState.Key = true;
             }
+            if (rooms[index].containsMap == true)
+            {
+                gameState.Map = true;
+            }
             if (gameState.HP <= 0)
             {
                 gameState.HP = 0;

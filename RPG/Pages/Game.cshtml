@@ -3,33 +3,29 @@
 @{ ViewData["Title"] = "setKeyLocation";
 }
 
-<p>klíč: @Model.gameState.Key</p>
-<p>index: @Model.index</p>
-<p>pozice klíče: @Model._ss.getKeyLocation()</p>
-
-@for (int i = 0; i < Model.rooms.Count; i++)
-{
-<p> @Model.rooms[i].id - @Model.rooms[i].raided - @Model.rooms[i].containsEnemy</p>
-}
 
 
 @if(Model.index == 14 && Model.gameState.Key == true)
 {
 <p>Odemykáš dveře, ez (s)klep.</p>
-<a href="@Url.Page("./Index")"><button>Začít znovu</button></a>
+<a href="@Url.Page("./Index")"><button class="btn btn-outline-dark">Začít znovu</button></a>
 }
-@{       else if(Model.gameState.HP == 0)
+@{ else if(Model.gameState.HP == 0)
     {
-            <p>Zabili tě jako...?</p>
-            <a href="@Url.Page("./Index")"><button>Začít znovu</button></a>
+    <p>Zabili tě jako...?</p>
+    <a href="@Url.Page("./Index")"><button class="btn btn-outline-dark">Začít znovu</button></a>
     }
-} 
-@{      else
+}
+@{ else
     {
-    <p>@Model.rooms[Model.index].description</p>
+    <p class="description">@Model.rooms[Model.index].description</p>
     @if(Model.index == Model._ss.getKeyLocation() && Model.rooms[Model.index].raided == false)
     {
     <p>Našel jsi klíč, tak ty jdeš fakt že jdeš.</p>
+    }
+    @if (Model.rooms[@Model.index].containsMap && Model.rooms[Model.index].raided == false)
+    {
+        <p>Našel jsi mapu!</p>
     }
 
 
@@ -39,7 +35,7 @@
         <div class="form-check">
             <input type="hidden" asp-for="@Model.key" value="@Model.key" />
             <label class="form-check-label" asp-for="@Model.index">
-                <button type="submit" name="index" value="@Model.rooms[Model.rooms[Model.index].rooms[i]].id">@Model.rooms[Model.rooms[Model.index].rooms[i]].button</button>
+                <button class="btn btn-outline-dark m-1" type="submit" name="index" value="@Model.rooms[Model.rooms[Model.index].rooms[i]].id">@Model.rooms[Model.rooms[Model.index].rooms[i]].button</button>
             </label>
         </div>
         }
@@ -48,10 +44,11 @@
     }
     @if (Model.rooms[Model.index].containsEnemy == true && Model.rooms[Model.index].raided == false)
     {
-   <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s" id="jumpscare">    <audio autoplay id="jumpscare">
+    <img src="~/img/jumpscare.jpg" class="animated fadeOut jumpscare animated.delay-3s" id="jumpscare">
+    <audio autoplay id="jumpscare">
         <source src="~/audio/jumpscare.mp3" type="audio/mp3">
-   </audio>
-   <script>
+    </audio>
+    <script>
        const sleep = (milliseconds) => {
             return new Promise(resolve => setTimeout(resolve, milliseconds))
             }
@@ -59,9 +56,12 @@
         let image = document.getElementById('jumpscare');
         image.parentNode.removeChild(image);
        })
-   </script>
+    </script>
+    }
+    @if (Model.gameState.Map)
+    {
+        <img src='~/img/maps/@Model.index .png' class="map"/>
     }
 }
-   <audio autoplay loop>
-       <source src="~/audio/halloween-theme.mp3" type="audio/mp3">
-   </audio>
+
+

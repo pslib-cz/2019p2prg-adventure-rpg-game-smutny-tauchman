@@ -26,6 +26,7 @@ namespace RPG.Pages
             _random = new Random();
             gameState = new GameState();
             gameState.HP = 100;
+            gameState.Map = false;
         }
 
         public void OnGet()

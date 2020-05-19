@@ -28,8 +28,8 @@ namespace RPG.Services
             Rooms.Add(new Room(9, "Místnost 9", "Jít do pravé místnosti", new int[] { 8 }));
             Rooms.Add(new Room(10, "Místnost 10", "Jít do levé místnosti", new int[] { 8 }));
             Rooms.Add(new Room(11, "Lampa právě přestala svítit. Na pravé straně jsou dveře, stejně tak, jako před tebou.", "Jít do levých dveří (předsíň)", new int[] { 1, 12, 13 }));
-            Rooms.Add(new Room(12, "Místnost 12", "Jít do pravých dveří (secret)", new int[] { 11 }));
-            Rooms.Add(new Room(13, "Místnost 13", "Pokračovat do levých dveří", new int[] { 11 }));
+            Rooms.Add(new Room(12, "Místnost 12", "Pokračovat do levých dveří", new int[] { 11 }));
+            Rooms.Add(new Room(13, "Místnost 13", "Jít do pravých dveří (secret)", new int[] { 11 }, false, false, false, true)); //SECRET
             Rooms.Add(new Room(14, "K odemčení dveří potřebuješ klíč!", "Pokusit se odemknout dveře", new int[] { 0 }, false));      //GAME OVER
             _ss.setKeyLocation(rnd.Next(1, Rooms.Count - 1));
             Rooms[(int)_ss.getKeyLocation()].containsKey = true;

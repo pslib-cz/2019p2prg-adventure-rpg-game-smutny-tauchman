@@ -1,0 +1,76 @@
+@import url('https://fonts.googleapis.com/css2?family=Doppio+One&display=swap');
+
+body {
+    text-align: center;
+    font-family: 'Doppio One', sans-serif;
+}
+.jumpscare {
+    position: absolute;
+    z-index: -1;
+    top: 5px;
+    left: 5px;
+    width: 100vw;
+    height: 100vh;
+}
+
+abbr:hover::after {
+    content: attr(data-title);
+    position: absolute;
+    margin-right: 15px;
+    margin-top: 15px;
+    background-color: #ffffcc;
+    max-width: 500px;
+    border: #000000 solid;
+    border-radius: 10px;
+    padding: 5px;
+}
+
+abbr {
+    text-decoration: none;
+}
+
+
+
+.title {
+    font-size: 30px;
+    font-weight: bold;
+}
+
+.firstLayer {
+    font-size: 25px;
+}
+.map {
+    width: 30vw;
+    height: 30vw;
+    position: absolute;
+    left: 69%;
+    bottom: 35%;
+}
+.description{
+    margin: 0 14rem 1rem 14rem;
+}
+@media only screen and (max-width: 498px){
+    .description{
+        margin: 0 0 1rem 0;
+    }
+    .map {
+        width: 98vw;
+        height: 98vw;
+        position: absolute;
+        left: 1%;
+        bottom: 10%;
+    }
+}
+@media only screen and (min-width: 499px) and (max-width: 636px){
+    .description {
+        margin: 0 0 1rem 0;
+    }
+
+    .map {
+        width: 78vw;
+        height: 78vw;
+        position: absolute;
+        left: 12%;
+        bottom: 10%;
+    }
+}

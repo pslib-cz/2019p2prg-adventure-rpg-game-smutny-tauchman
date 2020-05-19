@@ -12,9 +12,10 @@ namespace RPG.Models
         public string button { get; set; }
         public bool containsKey { get; set; }
         public bool containsEnemy { get; set; }
+        public bool containsMap { get; set; }
         public int[] rooms { get; set; }
         public bool raided { get; set; }
-        public Room(int id, string description, string button, int[] rooms, bool containsEnemy = false, bool raided = false,  bool containsKey = false)
+        public Room(int id, string description, string button, int[] rooms, bool containsEnemy = false, bool raided = false, bool containsKey = false, bool containsMap = false)
         {
             this.id = id;
             this.description = description;
@@ -23,6 +24,7 @@ namespace RPG.Models
             this.containsEnemy = containsEnemy;
             this.rooms = rooms;
             this.raided = raided;
+            this.containsMap = containsMap;
         }
     }
 }
