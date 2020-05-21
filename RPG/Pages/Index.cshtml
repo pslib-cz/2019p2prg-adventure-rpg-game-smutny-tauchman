@@ -4,33 +4,34 @@
 }
 <link href="~/css/site.css" rel="stylesheet" />
 <div class="text-center">
-    <h1>Zvol si obtížnost</h1>
+    <h1 class="warning">UPOZORNĚNÍ: HRA OBSAHUJE JUMPSCARY S VELICE HLASITOU HUDBOU. HRAJTE NA VLASTNÍ NEBEZPEČÍ.</h1>
+    <h2>Zvol si obtížnost</h2>
 </div>
 <form method="post">
     <div class="form-check">
         <div class="form-check">
             <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="1">
             <label class="form-check-label">
-                <abbr data-title="Obtížnost pro opice, takže každá pepega to zvládne">Jednoduchá</abbr>
+                <abbr data-title="Nic moc. Prakticky nikoho nepotkáš. A pokud ano, tak tě jen lehce pohladí. Nejtěžší bude schovka s klíčem...">Jednoduchá</abbr>
             </label>
         </div>
 
         <div class="form-check">
             <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="2">
             <label class="form-check-label">
-                <abbr data-title="Střeně těžká cesta pro ty, kteří to nechtějí mít jednoduché ani těžké">Střední</abbr>
+                <abbr data-title="Tohle je trochu zajímavější. Nejspíše už nekoho potkáš a ten někdo tě neuvidí rád. Žádné pohlazení jako od maminky.">Střední (doporučeno)</abbr>
             </label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="3">
             <label class="form-check-label">
-                <abbr data-title="Pokud si tohle zvolíš, tak jseš fakt frajer a god jako Pčkaři">Těžká</abbr>
+                <abbr data-title="Tak to je ovšem výzva. Půjde o to najít klíč, nebo nenajít ty, co tě tu nechtějí? Toť otázka.">Těžká</abbr>
             </label>
         </div>
         <div class="form-check">
             <input class="form-check-input" type="radio" asp-for="@Model.Difficulty" value="4">
             <label class="form-check-label">
-                <abbr data-title="Pokud tě dneska posral holub, tak máš určitě dneska štěstí ty bazerante. Neváhej a pojď okusit extrémní výzvu od těch nejlepších vývojářů na celým světě a zkusit svoje dnešní štěstí.">Holub</abbr>
+                <abbr data-title="To má být nějaký hloupý vtip?!">Xtreme</abbr>
             </label>
         </div>
     </div>

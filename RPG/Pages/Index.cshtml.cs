@@ -65,7 +65,7 @@ namespace RPG.Pages
             {
                 for (int i = 1; i < _locationsArr.Count - 1; i++)
                 {
-                    _locationsArr[i].containsEnemy = _random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 ? true : false;
+                    _locationsArr[i].containsEnemy = _random.Next(0, 11) == 5 || _random.Next(0, 11) == 4 || _random.Next(0, 11) == 3 || _random.Next(0, 11) == 2 || _random.Next(0, 11) == 1 ? true : false;
                 }
                 gameState.EnemyDamage = 100;
             }
