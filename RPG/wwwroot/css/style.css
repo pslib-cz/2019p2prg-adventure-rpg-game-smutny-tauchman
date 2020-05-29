@@ -43,37 +43,6 @@ abbr {
 .map {
     width: 30vw;
     height: 30vw;
-    position: absolute;
-    left: 69%;
-    bottom: 35%;
-}
-.description{
-    margin: 0 14rem 1rem 14rem;
-}
-@media only screen and (max-width: 498px){
-    .description{
-        margin: 0 0 1rem 0;
-    }
-    .map {
-        width: 98vw;
-        height: 98vw;
-        position: absolute;
-        left: 1%;
-        bottom: 10%;
-    }
-}
-@media only screen and (min-width: 499px) and (max-width: 636px){
-    .description {
-        margin: 0 0 1rem 0;
-    }
-
-    .map {
-        width: 78vw;
-        height: 78vw;
-        position: absolute;
-        left: 12%;
-        bottom: 10%;
-    }
 }
 
 .warning{
